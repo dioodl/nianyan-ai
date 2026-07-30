@@ -102,6 +102,10 @@ cd nianyan-ai
 pip install openai scikit-learn ttkthemes sentence-transformers numpy requests pillow scipy apscheduler baidusearch
 
 pip install ollama
+
+pip install jieba
+
+pip install rank_bm25
 ```
 
 
