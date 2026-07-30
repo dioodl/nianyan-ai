@@ -1,0 +1,125 @@
+{
+  "models": {
+    "researcher": {
+      "type": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "qwen2.5:3b",
+      "temperature": 0.3,
+      "max_tokens": 30000,
+      "description": "信息检索、知识问答"
+    },
+    "analyst": {
+      "type": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "alibayram/mimo-7b-rl",
+      "temperature": 0.1,
+      "max_tokens": 30000,
+      "description": "逻辑推理、数学计算"
+    },
+    "creator": {
+      "type": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "alibayram/mimo-7b-rl",
+      "temperature": 0.7,
+      "max_tokens": 30000,
+      "description": "创意生成、长篇创作"
+    },
+    "executor": {
+      "type": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "qwen2.5:7b",
+      "temperature": 0.3,
+      "max_tokens": 30000,
+      "description": "执行任务、结构化输出"
+    },
+    "expert": {
+      "type": "api",
+      "base_url": "https://api.deepseek.com/v1",
+      "model": "deepseek-v4-flash",
+      "api_key": "sk-密钥",
+      "temperature": 0.3,
+      "max_tokens": 384000,
+      "description": "DeepSeek V4 思考模式专家"
+    },
+    "knowledge_refiner": {
+      "type": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "deepseek-r1:7b",
+      "temperature": 0.3,
+      "max_tokens": 30000,
+      "description": "知识精炼与验证"
+    },
+    "vision": {
+      "type": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "qwen3-vl:4b",
+      "temperature": 0.3,
+      "max_tokens": 30000,
+      "description": "视觉理解、截图分析（建议使用支持多模态的模型）"
+    },
+    "parliament_member": {
+      "type": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "qwen2.5:3b",
+      "temperature": 0.8,
+      "max_tokens": 30000,
+      "description": "七情议会成员发言、跨学科视角简短发言（建议 4b 以上）"
+    },
+    "parliament_judge": {
+      "type": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "alibayram/mimo-7b-rl",
+      "temperature": 0.6,
+      "max_tokens": 30000,
+      "description": "七情议会裁判、跨学科综合裁判与导师总结"
+    },
+    "self_reviewer": {
+      "type": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "qwen2.5:7b",
+      "temperature": 0.3,
+      "max_tokens": 30000,
+      "description": "自审模块"
+    },
+    "self_narrator": {
+      "type": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "qwen2.5:3b",
+      "temperature": 0.8,
+      "max_tokens": 30000,
+      "description": "自我叙事日记生成"
+    },
+    "task_planner": {
+      "type": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "qwen2.5:7b",
+      "temperature": 0.2,
+      "max_tokens": 30000,
+      "description": "任务规划与分解"
+    },
+    "light_task": {
+      "type": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "qwen2.5:3b",
+      "temperature": 0.3,
+      "max_tokens": 30000,
+      "description": "轻量任务（注脚、摘要、伏笔检测）"
+    },
+    "time_parser": {
+      "type": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "qwen2.5:3b",
+      "temperature": 0.1,
+      "max_tokens": 30000,
+      "description": "时间表达式解析器"
+    },
+    "code_generator": {
+      "type": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "deepseek-r1:7b",
+      "temperature": 0.3,
+      "max_tokens": 30000,
+      "description": "A智脑代码生成"
+    }
+  }
+}
