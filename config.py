@@ -11,7 +11,7 @@ DEFAULT_MODEL = "qwen2.5:7b"
 DEFAULT_API_KEY = "ollama"
 
 # 通义千问 API Key（可选，用于联网搜索）
-QWEN_API_KEY = "sk-171c238898754d31ba1a22f65a6bd632"
+QWEN_API_KEY = "sk-xxxxxx"
 
 # ========== 文件存储路径配置 ==========
 MEMORY_DIR = "window_memories"
@@ -81,8 +81,8 @@ RISK_LLM_ENABLED = False  # LLM 辅助风险判断开关（默认关闭）
 SMTP_CONFIG = {
     "host": "smtp.qq.com",
     "port": 587,
-    "user": "dioodl@qq.com",          # 请替换为真实邮箱
-    "password": "twnaxcqmbjsbcabi" # 请替换为授权码
+    "user": "xxx@qq.com",          # 请替换为真实邮箱
+    "password": "xxx" # 请替换为授权码
 }
 
 ALLOWED_COMMANDS = [
