@@ -88,6 +88,7 @@
 - Python 3.10+
 - [Ollama](https://ollama.com/)（本地模型服务，支持 DeepSeek、Qwen 等）
 - 推荐硬件：8GB+ RAM，有 GPU 更佳
+- 项目开发时使用设备为笔记本32GB内存，4GB显存。
 
 ### 2. 克隆仓库
 ```bash
