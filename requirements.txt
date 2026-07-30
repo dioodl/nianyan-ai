@@ -1,0 +1,14 @@
+openai
+scikit-learn
+ttkthemes
+sentence-transformers
+numpy
+requests
+pillow
+scipy
+apscheduler
+baidusearch
+ollama
+jieba
+rank_bm25
+snownlp
