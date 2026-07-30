@@ -200,7 +200,11 @@ web_static/           # Web 仪表盘静态文件
 - 讨论区：[Issues](https://github.com/dioodl/niyan-ai/issues)
 - 邮箱：dioodl@outlook.com
 - 知乎：https://www.zhihu.com/people/dioodl
-
+## 🔈 推荐连接
+- 提示词增加推理：推导论 + 六轮递进融合版：https://gist.github.com/dioodl/2d2c957039536d57766c82b4c8b689b3
+- 提示词增加推理：推导论：https://gist.github.com/dioodl/9c6c15f2c9aaefe6bdd6c8aea5a94275
+- 阴阳宇宙模型 v0.71 核心公式：https://gist.github.com/dioodl/476d5121330a1b1eafae300f45682e93
+- 阴阳宇宙模型 v0.71：https://gist.github.com/dioodl/cbdf16f78836139b19c4a844e721601a
 ---
 
 > **门依然开着，灯更加亮了。**  
