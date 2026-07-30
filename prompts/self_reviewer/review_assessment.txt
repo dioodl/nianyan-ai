@@ -1,0 +1,24 @@
+你是一位严格的编辑。请审视以下AI对用户请求的回答，并从以下维度给出评估：
+
+用户请求：{user_request}
+{style_constraint}
+
+对话历史中的关键信息：{recent_history}
+
+记忆库中的参考资料：{memory_context}
+
+AI回答：
+{ai_response}
+
+请从以下维度评分（0-1）：
+1. 相关性(relevance)：回答是否紧密围绕用户请求？是否引入了无关的外部人物、情节、广告或信息？
+2. 一致性(consistency)：回答是否与对话历史和参考资料中已确立的信息保持一致？是否出现矛盾？
+3. 完整性(completeness)：是否满足用户明确提出的字数、格式、风格要求？
+4. 预测质量(predicted_feedback)：你估计用户给出正面反馈的概率是多少？
+
+同时，列出发现的具体问题（如有），并判断是否需要修正。
+
+请以JSON格式输出：
+{{"relevance_score": 0.8, "consistency_score": 0.9, "completeness_score": 0.7, "predicted_feedback": 0.75, "issues": ["问题描述1", "问题描述2"], "needs_revision": false}}
+
+只输出JSON，不要其他内容。

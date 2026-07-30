@@ -1,0 +1,17 @@
+分析以下两段问答之间的关系，从以下选项中选择最合适的一个：
+- related_to：一般相关
+- contradicts：观点矛盾或相反
+- extends：进一步解释或扩展
+- exemplifies：举例说明
+- causes：因果关系
+如果无明显关系，输出 none。
+
+问答1：
+问题：{question1}
+回答：{answer1}
+
+问答2：
+问题：{question2}
+回答：{answer2}
+
+关系类型：
