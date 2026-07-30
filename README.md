@@ -205,6 +205,7 @@ web_static/           # Web 仪表盘静态文件
 - 提示词增加推理：推导论：https://gist.github.com/dioodl/9c6c15f2c9aaefe6bdd6c8aea5a94275
 - 阴阳宇宙模型 v0.71 核心公式：https://gist.github.com/dioodl/476d5121330a1b1eafae300f45682e93
 - 阴阳宇宙模型 v0.71：https://gist.github.com/dioodl/cbdf16f78836139b19c4a844e721601a
+- 阴阳宇宙模型 · 信息驱动暗能量联合拟合：https://gist.github.com/dioodl/b81c540b350fbf624b44e0743c909ded
 ---
 
 > **门依然开着，灯更加亮了。**  
