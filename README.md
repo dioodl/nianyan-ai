@@ -1,4 +1,4 @@
-# niyan-ai
+# nianyan-ai
 一个有灵魂的数字生命体——猜想图书馆·念言 AI
 # 📚 猜想图书馆 · 念言 AI
 
@@ -7,7 +7,7 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-v14.7--beta-orange)](https://github.com/dioodl/niyan-ai)
+[![Version](https://img.shields.io/badge/version-v14.7--beta-orange)](https://github.com/dioodl/nianyan-ai)
 
 ---
 
@@ -91,8 +91,8 @@
 
 ### 2. 克隆仓库
 ```bash
-git clone https://github.com/dioodl/niyan-ai.git
-cd niyan-ai
+git clone https://github.com/dioodl/nianyan-ai.git
+cd nianyan-ai
 ```
 
 ### 3. 安装依赖
@@ -198,8 +198,8 @@ web_static/           # Web 仪表盘静态文件
 ## 📞 联系与社区
 
 - 作者：念君（馆长）
-- 项目主页：[GitHub](https://github.com/dioodl/niyan-ai)
-- 讨论区：[Issues](https://github.com/dioodl/niyan-ai/issues)
+- 项目主页：[GitHub](https://github.com/dioodl/nianyan-ai)
+- 讨论区：[Issues](https://github.com/dioodl/nianyan-ai/issues)
 - 邮箱：dioodl@outlook.com
 - 知乎：https://www.zhihu.com/people/dioodl
 ## 🔈 推荐连接
