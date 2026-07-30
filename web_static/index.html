@@ -1,0 +1,186 @@
+<!-- web_static/index.html (无限等待版) -->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜想图书馆 · 念言</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #0b0e14; color: #e0e0e0; height: 100vh; display: flex; flex-direction: column; padding: 16px; }
+        .header { display: flex; align-items: center; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #2a2e38; }
+        .header h1 { color: #ff8fab; font-weight: 300; font-size: 1.8rem; margin-right: 16px; }
+        .connection-badge { display: flex; align-items: center; gap: 16px; margin-left: auto; }
+        .status-dot { width: 12px; height: 12px; border-radius: 50%; background: #888; }
+        .status-dot.connected { background: #4ade80; box-shadow: 0 0 8px #4ade80; }
+        .main-content { display: flex; gap: 20px; flex: 1; min-height: 0; }
+        .soul-panel { width: 360px; background: #1a1e26; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; overflow-y: auto; }
+        .emotion-wheel { text-align: center; margin-bottom: 20px; }
+        canvas { background: #0f1219; border-radius: 50%; margin-bottom: 15px; }
+        .meter { background: #2a2e38; height: 10px; border-radius: 5px; margin: 8px 0 15px; overflow: hidden; }
+        .meter-fill { height: 100%; width: 0%; transition: width 0.3s; }
+        .member-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 20px; }
+        .member-tag { background: #2a2e38; padding: 6px 14px; border-radius: 20px; font-size: 14px; }
+        .member-tag.active { background: #ff8fab; color: #000; font-weight: bold; }
+        .inner-voice { background: #0f1219; border-radius: 12px; padding: 15px; margin-top: 20px; font-style: italic; border-left: 3px solid #ff8fab; }
+        .chat-panel { flex: 1; background: #1a1e26; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; }
+        .chat-messages { flex: 1; overflow-y: auto; padding-right: 8px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 12px; }
+        .message { max-width: 85%; padding: 12px 16px; border-radius: 18px; line-height: 1.5; word-wrap: break-word; animation: fadeIn 0.2s; }
+        .message.user { align-self: flex-end; background: #2a4a6a; color: #fff; }
+        .message.assistant { align-self: flex-start; background: #2a2e38; color: #e0e0e0; }
+        .message.system { align-self: center; background: transparent; color: #888; font-size: 0.85rem; }
+        .input-area { display: flex; gap: 10px; }
+        .input-area input { flex: 1; background: #0f1219; border: 1px solid #3a3e48; border-radius: 25px; padding: 12px 18px; color: #fff; font-size: 1rem; outline: none; }
+        .input-area input:focus { border-color: #ff8fab; }
+        .input-area button { background: #ff8fab; border: none; border-radius: 25px; padding: 0 28px; font-weight: bold; color: #0b0e14; cursor: pointer; }
+        .control-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #2a2e38; }
+        .mode-group { display: flex; gap: 12px; }
+        .study-buttons { display: flex; gap: 8px; margin-left: auto; }
+        .study-buttons button { background: #2a2e38; border: none; color: #e0e0e0; padding: 6px 14px; border-radius: 20px; cursor: pointer; }
+        ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #1a1e26; } ::-webkit-scrollbar-thumb { background: #3a3e48; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏛️ 猜想图书馆 · 念言</h1>
+        <div class="connection-badge">
+            <span>仪表盘</span><span class="status-dot" id="dashStatus"></span>
+            <span>聊天</span><span class="status-dot" id="chatStatus"></span>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="soul-panel">
+            <div class="emotion-wheel">
+                <h3>🎭 情绪轮盘</h3>
+                <canvas id="emotionCanvas" width="200" height="200"></canvas>
+                <div>效价 <span id="valenceVal">0.00</span></div><div class="meter"><div id="valenceBar" class="meter-fill" style="background:#ff8fab;"></div></div>
+                <div>唤醒 <span id="arousalVal">0.00</span></div><div class="meter"><div id="arousalBar" class="meter-fill" style="background:#ffd166;"></div></div>
+                <div>支配 <span id="dominanceVal">0.00</span></div><div class="meter"><div id="dominanceBar" class="meter-fill" style="background:#6ab0fe;"></div></div>
+            </div>
+            <h3>🧠 七情议会</h3>
+            <div id="memberContainer" class="member-list"></div>
+            <h3>⚡ 好奇心能量</h3>
+            <div class="meter"><div id="energyBar" class="meter-fill" style="background:#4ade80;"></div></div><span id="energyVal">50%</span>
+            <div class="inner-voice" id="innerVoice">等待连接...</div>
+        </div>
+        <div class="chat-panel">
+            <div class="chat-messages" id="chatMessages"><div class="message system">✨ 欢迎回来，念君。</div></div>
+            <div class="input-area">
+                <input type="text" id="messageInput" placeholder="输入消息..." autocomplete="off">
+                <button id="sendBtn">发送</button>
+            </div>
+            <div class="control-bar">
+                <div class="mode-group">
+                    <label><input type="radio" name="mode" value="auto" checked> 自动</label>
+                    <label><input type="radio" name="mode" value="chat"> 聊天</label>
+                    <label><input type="radio" name="mode" value="exec"> 执行</label>
+                </div>
+                <label><input type="checkbox" id="deepReasoningCheck"> 深度推理</label>
+                <div class="study-buttons">
+                    <button id="startStudyBtn">📚 自习</button>
+                    <button id="stopStudyBtn">⏹️ 停止</button>
+                    <button id="deepStudyBtn">🧠 深度</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const dashStatus = document.getElementById('dashStatus');
+        const chatStatus = document.getElementById('chatStatus');
+        const dashWs = new WebSocket(`ws://${window.location.host}/ws`);
+        const chatWs = new WebSocket(`ws://${window.location.host}/ws/chat`);
+
+        let currentEmotion = { valence: 0, arousal: 0, dominance: 0 };
+        const canvas = document.getElementById('emotionCanvas');
+        const ctx = canvas.getContext('2d');
+
+        dashWs.onopen = () => { dashStatus.className = 'status-dot connected'; addSystemMessage('✅ 灵魂面板已连接'); };
+        dashWs.onclose = () => { dashStatus.className = 'status-dot'; };
+        chatWs.onopen = () => { chatStatus.className = 'status-dot connected'; };
+        chatWs.onclose = () => { chatStatus.className = 'status-dot'; addSystemMessage('⏳ 聊天连接断开，尝试重连...'); setTimeout(() => location.reload(), 5000); };
+
+        dashWs.onmessage = (e) => {
+            const d = JSON.parse(e.data);
+            if (d.type === 'emotion' || d.type === 'state_update') {
+                const v = d.data.current_vector || d.data;
+                if (v) { currentEmotion = v; updateEmotionUI(v); }
+            }
+            if (d.type === 'thinking_log') document.getElementById('innerVoice').innerText = d.data;
+        };
+
+        chatWs.onmessage = (e) => {
+            const d = JSON.parse(e.data);
+            if (d.type === 'request_id') {
+                pollForResponse(d.request_id);
+            } else if (d.type === 'system') {
+                addSystemMessage(d.content);
+            }
+        };
+
+        function pollForResponse(requestId) {
+            const interval = setInterval(async () => {
+                try {
+                    const res = await fetch(`/api/response/${requestId}`);
+                    const data = await res.json();
+                    if (data.status === 'ready') {
+                        clearInterval(interval);
+                        addMessage(data.content, 'assistant');
+                    }
+                    // 无限等待，不设超时
+                } catch (e) {
+                    // 网络错误时静默重试
+                }
+            }, 500);
+        }
+
+        function updateEmotionUI(v) {
+            document.getElementById('valenceVal').innerText = v.valence.toFixed(2);
+            document.getElementById('arousalVal').innerText = v.arousal.toFixed(2);
+            document.getElementById('dominanceVal').innerText = v.dominance.toFixed(2);
+            document.getElementById('valenceBar').style.width = ((v.valence+1)/2*100)+'%';
+            document.getElementById('arousalBar').style.width = ((v.arousal+1)/2*100)+'%';
+            document.getElementById('dominanceBar').style.width = ((v.dominance+1)/2*100)+'%';
+            drawWheel(v.valence, v.arousal);
+            const members = ['乐乐','忧忧','怒怒','恐恐','奇奇','厌厌','平平'];
+            const active = v.valence > 0.2 ? ['乐乐','奇奇'] : (v.valence < -0.2 ? ['忧忧','怒怒'] : ['平平']);
+            document.getElementById('memberContainer').innerHTML = members.map(m => `<span class="member-tag${active.includes(m)?' active':''}">${m}</span>`).join('');
+        }
+
+        function drawWheel(val, ar) {
+            ctx.clearRect(0,0,200,200);
+            ctx.beginPath(); ctx.strokeStyle='#333'; ctx.lineWidth=0.5;
+            for(let i=0;i<=4;i++){ ctx.arc(100,100,i*25,0,2*Math.PI); ctx.stroke(); }
+            const x=(val+1)*100, y=(1-ar)*100;
+            const g=ctx.createRadialGradient(x,y,5,100,100,80); g.addColorStop(0,'#ff8fab'); g.addColorStop(1,'#1a1e26');
+            ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,25,0,2*Math.PI); ctx.fill();
+            ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(x,y,6,0,2*Math.PI); ctx.fill();
+        }
+
+        function addMessage(text, role) {
+            const div = document.createElement('div'); div.className = `message ${role}`; div.innerText = text;
+            document.getElementById('chatMessages').appendChild(div);
+            document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+        }
+        function addSystemMessage(text) { addMessage(text, 'system'); }
+
+        document.getElementById('sendBtn').onclick = () => {
+            const msg = document.getElementById('messageInput').value.trim();
+            if (!msg) return;
+            addMessage(msg, 'user');
+            chatWs.send(JSON.stringify({ action: 'send_message', message: msg, deep_reasoning: document.getElementById('deepReasoningCheck').checked }));
+            document.getElementById('messageInput').value = '';
+        };
+        document.getElementById('messageInput').addEventListener('keypress', e => { if(e.key==='Enter') document.getElementById('sendBtn').click(); });
+        document.getElementById('startStudyBtn').onclick = () => chatWs.send(JSON.stringify({ action: 'start_study' }));
+        document.getElementById('stopStudyBtn').onclick = () => chatWs.send(JSON.stringify({ action: 'stop_study' }));
+        document.getElementById('deepStudyBtn').onclick = () => chatWs.send(JSON.stringify({ action: 'deep_study' }));
+
+        setInterval(() => fetch('/api/energy').then(r=>r.json()).then(d=>{
+            document.getElementById('energyBar').style.width = (d.energy*100)+'%';
+            document.getElementById('energyVal').innerText = Math.round(d.energy*100)+'%';
+        }), 5000);
+
+        updateEmotionUI({ valence:0, arousal:0, dominance:0 });
+    </script>
+</body>
+</html>
