@@ -176,9 +176,6 @@ web_static/           # Web 仪表盘静态文件
 - 增加新的原子操作（如鼠标键盘控制）
 - 完善 Web 仪表盘交互
 - 编写标准化测试用例（LoCoMo / LongMemEval）
-
-请阅读 [贡献指南](CONTRIBUTING.md) 和 [行为准则](CODE_OF_CONDUCT.md)。
-
 ---
 
 ## 📜 许可证
