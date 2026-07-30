@@ -1,0 +1,35 @@
+{
+  "tools": [
+    {
+      "name": "deep_read",
+      "description": "深度阅读器：解读小说、分析长文本、回顾记忆，支持逐层提炼并生成精读报告",
+      "source": "builtin",
+      "registered_at": "2026-04-30T00:00:00"
+    },
+    {
+      "name": "web_browser_search",
+      "description": "浏览器搜索：在百度上搜索信息并提取结果",
+      "source": "builtin",
+      "registered_at": "2026-04-30T00:00:00"
+    },
+    {
+      "name": "execute_script",
+      "description": "执行 Python 脚本：安全地运行一段代码，脚本会被保留以便复用",
+      "source": "builtin",
+      "registered_at": "2026-04-30T00:00:00"
+    },
+    {
+      "name": "generate_text",
+      "description": "调用大模型生成文本、代码或故事",
+      "source": "builtin",
+      "registered_at": "2026-04-30T00:00:00"
+    },
+    {
+      "name": "save_file",
+      "description": "将内容保存到指定位置（如桌面）",
+      "source": "builtin",
+      "registered_at": "2026-04-30T00:00:00"
+    }
+  ],
+  "last_updated": "2026-04-30T00:00:00"
+}
