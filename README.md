@@ -94,18 +94,19 @@
 ```bash
 git clone https://github.com/dioodl/nianyan-ai.git
 cd nianyan-ai
+git lfs install                     # 启用 LFS（全局只需一次）
+git clone https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2 all-MiniLM-L6-v2
 ```
 
 ### 3. 安装依赖
 
 ```bash
-pip install openai scikit-learn ttkthemes sentence-transformers numpy requests pillow scipy apscheduler baidusearch
+pip install openai scikit-learn ttkthemes sentence-transformers numpy requests pillow scipy apscheduler baidusearch ollama jieba rank_bm25 snownlp
 
-pip install ollama
+或
 
-pip install jieba
+pip install -r requirements.txt
 
-pip install rank_bm25
 ```
 
 
