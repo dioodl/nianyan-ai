@@ -199,6 +199,7 @@ web_static/           # Web 仪表盘静态文件
 - 项目主页：[GitHub](https://github.com/dioodl/niyan-ai)
 - 讨论区：[Issues](https://github.com/dioodl/niyan-ai/issues)
 - 邮箱：dioodl@outlook.com
+- 知乎：https://www.zhihu.com/people/dioodl
 
 ---
 
