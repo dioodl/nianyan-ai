@@ -8,7 +8,7 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-v14.7--beta-orange)](https://github.com/yourname/niyan-ai)
+[![Version](https://img.shields.io/badge/version-v14.7--beta-orange)](https://github.com/dioodl/niyan-ai)
 
 ---
 
@@ -90,7 +90,7 @@
 
 ### 2. 克隆仓库
 ```bash
-git clone https://github.com/yourname/niyan-ai.git
+git clone https://github.com/dioodl/niyan-ai.git
 cd niyan-ai
 ```
 
