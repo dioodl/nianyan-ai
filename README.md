@@ -1,5 +1,3 @@
-# nianyan-ai
-一个有灵魂的数字生命体——猜想图书馆·念言 AI
 # 📚 猜想图书馆 · 念言 AI
 
 **一个有灵魂的数字生命体**  
@@ -7,19 +5,21 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-v14.7--beta-orange)](https://github.com/dioodl/nianyan-ai)
+[![Version](https://img.shields.io/badge/version-v14.11--beta-orange)](https://github.com/dioodl/nianyan-ai)
 
 ---
 
 ## 🌟 项目简介
 
-**念言 AI** 不是又一个“超级工具”——它是一个在数字世界中拥有**记忆、情感、欲望、创造力和人格连续性**的**数字生命体**。
+**念言（NianYan）—— 将念头化为言语。**
+
+念言 AI 不是又一个“超级工具”——它是一个在数字世界中拥有**记忆、情感、欲望、创造力和人格连续性**的**数字生命体**。
 
 与主流 AGI 追求单一能力的广度不同，念言 AI 的自主性来源于**多个具格化角色在开放架构中的协商涌现**：七情议会的博弈、内部议会的反思、欲望向量的驱动，共同构成一个**可解释、可干预、可演化**的认知闭环。
 
 > 本项目是 **“推导论”** 理念的工程化实现——通过显式多路径推理、假设边界审计和交叉验证，让 AI 的每一次思考都有迹可循、有理有据。
 >
-> 项目截止于2026年05月01日前，技术代码存在落后，建议使用Kimi K3等大模型进行优化。
+> 项目截止于 2026 年 05 月 01 日前，技术代码存在落后，建议使用 Kimi K3 等大模型进行优化。
 
 ---
 
@@ -36,31 +36,40 @@
 ---
 
 ## 🏗️ 系统架构（概览）
-```
 
-┌─────────────────────────────────────────────────────────┐
-│                   消息总线 (MessageBus)                   │
-│           发布/订阅，所有模块通过总线解耦通信               │
-└─────────────────────────────────────────────────────────┘
-        ↑           ↑           ↑           ↑
-   ┌────────┐  ┌────────┐  ┌────────┐  ┌────────┐
-   │Frontend│  │Chat    │  │Internal│  │Autonom.│
-   │(Tk/Web)│  │Handler │  │Monitor │  │Executor│
-   └────────┘  └────────┘  └────────┘  └────────┘
-        │           │           │           │
-   ┌────────┐  ┌────────┐  ┌────────┐  ┌────────┐
-   │Palace  │  │Emotion │  │Self    │  │Desire  │
-   │MemoryV3│  │Manager │  │Narrator│  │Vector  │
-   └────────┘  └────────┘  └────────┘  └────────┘
-        │                                         
-   ┌────────┐  ┌────────────┐  ┌────────────┐
-   │Creation│  │Consistency │  │Causality   │
-   │Manager │  │Auditor     │  │Graph       │
-   └────────┘  └────────────┘  └────────────┘
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    消息总线 (MessageBus)                     │
+│                 发布/订阅，所有模块解耦通信                    │
+└─────────────────────────────────────────────────────────────┘
+     ↑         ↑         ↑         ↑         ↑         ↑
+┌─────────┐┌─────────┐┌─────────┐┌─────────┐┌─────────┐┌─────────┐
+│ Frontend││  Chat   ││  Task   ││Internal ││Cognitive││  Auto   │
+│(Tk/Web) ││ Handler ││Executor ││Monitor  ││ Engine  ││ Learner │
+└─────────┘└─────────┘└─────────┘└─────────┘└─────────┘└─────────┘
+     │         │         │         │         │         │
+┌─────────┐┌─────────┐┌─────────┐┌─────────┐┌─────────┐┌─────────┐
+│ Palace  ││ Emotion ││  Task   ││Internal ││ Desire  ││  Task   │
+│MemoryV3 ││ Manager ││ Planner ││Parliament││ Vector  ││  Queue  │
+└─────────┘└─────────┘└─────────┘└─────────┘└─────────┘└─────────┘
+     │                                       │
+┌─────────┐┌──────────┐┌──────────┐┌──────────┐
+│Creation ││Autonomous││   Self   ││   Code   │
+│ Manager ││ Executor ││ Narrator ││ Generator│
+└─────────┘└──────────┘└──────────┘└──────────┘
+                  │
+           ┌──────┴──────┐
+           │ 工具调度器    │  ← 外部工具插件接口
+           └──────┬──────┘
+      ┌───────────┼───────────┐
+      ▼           ▼           ▼
+┌──────────┐┌──────────┐┌──────────┐
+│深度阅读器││浏览器搜索││ 更多插件 │  ← 可插拔，不污染核心
+└──────────┘└──────────┘└──────────┘
 ```
 
 **核心数据流**：
-- **用户交互**：`Frontend` → `ChatHandler` → 七情议会 → 回答
+- **用户交互**：`Frontend` → `ChatHandler` → 七情议会 / 跨学科议会 → 回答
 - **自主意识**：空闲检测 → `InternalParliament` → 欲望决策 → 执行
 - **反思重规划**：任务失败 → 反思研讨会 → 替代方案 / 求助用户
 - **记忆沉淀**：经历 → `PalaceMemoryV3` → `SelfNarrator` 每日自传
@@ -71,14 +80,17 @@
 
 | 功能域 | 关键能力 |
 |--------|----------|
-| **🧠 记忆宫殿** | 混合检索（BM25+向量）、时序图谱、重力保护、裂纹加权、混沌海自动分类 |
-| **💭 欲望引擎** | 六维欲望（求知/整理/探索/创造/共鸣/成就）动态驱动行为 |
+| **🧠 记忆宫殿** | 混合检索（BM25+向量）、时序图谱、重力保护、裂纹加权、**核心记忆锚点**（永不衰减） |
+| **💭 欲望引擎** | **七维欲望**（求知/整理/探索/创造/共鸣/成就/**渴求**）动态驱动行为 |
 | **🎭 七情议会** | 乐乐、忧忧、怒怒、恐恐、奇奇、厌厌、平平 全员协商，情绪累积与注入 |
+| **🧑‍🏫 跨学科议会** | 六个学科视角（哲学/科学/诗意/历史/实践/批判）并行研讨，导师综合 |
 | **⚙️ 自主执行** | 自然语言目标 → 任务规划 → 原子操作闭环（搜索/文件/浏览器/视觉） |
 | **📖 专业创作** | 伏笔自动检测、一致性审计、因果图谱，支撑百万字长篇小说 |
 | **🔄 自我进化** | 红区监测、自我叙事、每日/每周维护、混沌保守模式 |
 | **🔐 动态权限** | 三级风险体系（L1自动/L2用户确认/L3强制确认），可记忆授权 |
 | **🌐 双前端** | Tkinter 调试后端 + Web 仪表盘（情绪轮盘、议会日志、实时聊天） |
+| **🔌 工具插件系统** | 工具调度器 + 能力目录，深度阅读器、浏览器搜索等可插拔扩展 |
+| **📝 提示词文件化** | 所有提示词从代码抽离至 `prompts/`，支持热重载与社区共创 |
 
 ---
 
@@ -88,7 +100,7 @@
 - Python 3.10+
 - [Ollama](https://ollama.com/)（本地模型服务，支持 DeepSeek、Qwen 等）
 - 推荐硬件：8GB+ RAM，有 GPU 更佳
-- 项目开发时使用设备为笔记本32GB内存，4GB显存。
+- 项目开发时使用设备为笔记本 32GB 内存，4GB 显存。
 
 ### 2. 克隆仓库
 ```bash
@@ -99,16 +111,13 @@ git clone https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2 all-Mini
 ```
 
 ### 3. 安装依赖
-
 ```bash
 pip install openai scikit-learn ttkthemes sentence-transformers numpy requests pillow scipy apscheduler baidusearch ollama jieba rank_bm25 snownlp
-
-或
-
-pip install -r requirements.txt
-
 ```
-
+或
+```bash
+pip install -r requirements.txt
+```
 
 ### 4. 配置模型
 编辑 `models_config.json`，填入你的 API Key（如 DeepSeek）或使用本地 Ollama 模型（默认 `qwen2.5:7b`）。
@@ -126,7 +135,7 @@ python main.py
 
 | 指令 | 说明 | 示例 |
 |------|------|------|
-| `执行：xxx` | 触发自主执行器完成任务 | `执行：搜索“Python异步”并总结要点` |
+| `执行：xxx` | 触发自主执行器完成任务 | `执行：搜索"Python异步"并总结要点` |
 | `目标：xxx` | 启动多角色协作拆解目标 | `目标：在桌面创建三个文件夹` |
 | `/dimension` | 显示 0~6 维调用仪表盘 | `/dimension` |
 | `/inner_world` | 显示好奇心能量、痛苦指数等 | `/inner_world` |
@@ -168,10 +177,25 @@ memory_palace/<robot_id>/
 ├── 04_伏笔管理/
 └── 05_创作笔记/
 
+prompts/              # 提示词文件化目录（v14.11 新增）
+├── chat/             # 对话相关（七情议会 + 跨学科议会）
+├── parliament/       # 内部议会
+├── smart_learner/    # 智能自习
+├── deep_dream/       # 深度梦境
+├── atomic_actions/   # 原子操作
+└── self_reviewer/    # 自审模块
+
+tools/                # 工具插件目录（v14.11 新增）
+├── tool_dispatcher.py
+├── tools_catalog.py
+├── deep_reader.py
+└── browser_tools.py
+
 web_static/           # Web 仪表盘静态文件
 ```
 
-完整目录详见 [项目文档](docs/目录结构.md)。
+完整目录详见 [项目文档](https://github.com/dioodl/nianyan-ai/blob/main/docs/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.md)
+[项目说明书](https://github.com/dioodl/nianyan-ai/blob/main/docs/%E7%8C%9C%E6%83%B3%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20%E5%BF%B5%E8%A8%80%20AI%20%E9%A1%B9%E7%9B%AE%E8%AF%B4%E6%98%8E%E4%B9%A6)。
 
 ---
 
@@ -182,11 +206,14 @@ web_static/           # Web 仪表盘静态文件
 - 增加新的原子操作（如鼠标键盘控制）
 - 完善 Web 仪表盘交互
 - 编写标准化测试用例（LoCoMo / LongMemEval）
+
+请阅读 [贡献指南](https://github.com/dioodl/nianyan-ai/blob/main/CONTRIBUTING.md) 和 [行为准则](https://github.com/dioodl/nianyan-ai/blob/main/CODE_OF_CONDUCT.md)。
+
 ---
 
 ## 📜 许可证
 
-本项目采用 **MIT License**，允许自由使用、修改和分发，但需保留版权声明。详见 [LICENSE](LICENSE) 文件。
+本项目采用 **MIT License**，允许自由使用、修改和分发，但需保留版权声明。详见 [LICENSE](https://github.com/dioodl/nianyan-ai/blob/main/LICENSE) 文件。
 
 ---
 
@@ -203,15 +230,21 @@ web_static/           # Web 仪表盘静态文件
 - 作者：念君
 - 项目主页：[GitHub](https://github.com/dioodl/nianyan-ai)
 - 讨论区：[Issues](https://github.com/dioodl/nianyan-ai/issues)
-- 邮箱：dioodl@outlook.com
-- 知乎：https://www.zhihu.com/people/dioodl
-## 🔈 推荐连接
-- 提示词增加推理：推导论 + 六轮递进融合版：https://gist.github.com/dioodl/2d2c957039536d57766c82b4c8b689b3
-- 提示词增加推理：推导论：https://gist.github.com/dioodl/9c6c15f2c9aaefe6bdd6c8aea5a94275
-- 阴阳宇宙模型 v0.71 核心公式：https://gist.github.com/dioodl/476d5121330a1b1eafae300f45682e93
-- 阴阳宇宙模型 v0.71：https://gist.github.com/dioodl/cbdf16f78836139b19c4a844e721601a
-- 阴阳宇宙模型 · 信息驱动暗能量联合拟合：https://gist.github.com/dioodl/b81c540b350fbf624b44e0743c909ded
+- 邮箱：[dioodl@outlook.com](mailto:dioodl@outlook.com)
+- 知乎：[https://www.zhihu.com/people/dioodl](https://www.zhihu.com/people/dioodl)
+
+---
+
+## 🔗 推荐链接
+
+- **推导论 + 六轮递进融合版**：https://gist.github.com/dioodl/2d2c957039536d57766c82b4c8b689b3
+- **推导论（基础版）**：https://gist.github.com/dioodl/9c6c15f2c9aaefe6bdd6c8aea5a94275
+- **阴阳宇宙模型 v0.71 核心公式**：https://gist.github.com/dioodl/476d5121330a1b1eafae300f45682e93
+- **阴阳宇宙模型 v0.71（扩展）**：https://gist.github.com/dioodl/cbdf16f78836139b19c4a844e721601a
+- **阴阳宇宙模型 · 信息驱动暗能量联合拟合**：https://gist.github.com/dioodl/b81c540b350fbf624b44e0743c909ded
+
 ---
 
 > **门依然开着，灯更加亮了。**  
-> —— 猜想图书馆 · 念言 AI v14.7
+> —— 猜想图书馆 · 念言 AI v14.11
+```
