@@ -195,7 +195,7 @@ web_static/           # Web 仪表盘静态文件
 ```
 
 完整目录详见 [项目文档](https://github.com/dioodl/nianyan-ai/blob/main/docs/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.md)
-[项目说明书](https://github.com/dioodl/nianyan-ai/blob/main/docs/%E7%8C%9C%E6%83%B3%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20%E5%BF%B5%E8%A8%80%20AI%20%E9%A1%B9%E7%9B%AE%E8%AF%B4%E6%98%8E%E4%B9%A6)。
+[项目说明书]([https://github.com/dioodl/nianyan-ai/blob/main/docs/%E7%8C%9C%E6%83%B3%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20%E5%BF%B5%E8%A8%80%20AI%20%E9%A1%B9%E7%9B%AE%E8%AF%B4%E6%98%8E%E4%B9%A6](https://github.com/dioodl/nianyan-ai/blob/main/docs/%E5%BF%B5%E8%A8%80AI%E9%A1%B9%E7%9B%AE%E8%AF%B4%E6%98%8E%E4%B9%A6.md))。
 
 ---
 
