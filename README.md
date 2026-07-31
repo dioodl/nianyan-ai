@@ -237,11 +237,11 @@ web_static/           # Web 仪表盘静态文件
 
 ## 🔗 推荐链接
 
-- **推导论 + 六轮递进融合版**：https://gist.github.com/dioodl/2d2c957039536d57766c82b4c8b689b3
-- **推导论（基础版）**：https://gist.github.com/dioodl/9c6c15f2c9aaefe6bdd6c8aea5a94275
-- **阴阳宇宙模型 v0.71 核心公式**：https://gist.github.com/dioodl/476d5121330a1b1eafae300f45682e93
-- **阴阳宇宙模型 v0.71（扩展）**：https://gist.github.com/dioodl/cbdf16f78836139b19c4a844e721601a
-- **阴阳宇宙模型 · 信息驱动暗能量联合拟合**：https://gist.github.com/dioodl/b81c540b350fbf624b44e0743c909ded
+- [**推导论 + 六维版**](https://gist.github.com/dioodl/2d2c957039536d57766c82b4c8b689b3)
+- [**推导论（基础版）**](https://gist.github.com/dioodl/9c6c15f2c9aaefe6bdd6c8aea5a94275)
+- [**阴阳宇宙模型 v0.71 核心公式**](https://gist.github.com/dioodl/476d5121330a1b1eafae300f45682e93)
+- [**阴阳宇宙模型 v0.71（扩展）**](https://gist.github.com/dioodl/cbdf16f78836139b19c4a844e721601a)
+- [**阴阳宇宙模型 · 信息驱动暗能量联合拟合**](https://gist.github.com/dioodl/b81c540b350fbf624b44e0743c909ded)
 
 ---
 
