@@ -236,7 +236,9 @@ web_static/           # Web 仪表盘静态文件
 ---
 
 ## 🔗 推荐链接
-
+- 提示词推荐：负熵编织者扩散可能性后进行六维推导论收敛。
+- [**六维推导论+负熵编织融合版**](https://gist.github.com/dioodl/50fceb59e288dea7f85b8272a05dd0dd)
+- [**负熵编织者 · 系统提示词**](https://gist.github.com/dioodl/3c286c280968b9fc8eb4fe7669ee35d4)
 - [**推导论 + 六维版**](https://gist.github.com/dioodl/2d2c957039536d57766c82b4c8b689b3)
 - [**推导论（基础版）**](https://gist.github.com/dioodl/9c6c15f2c9aaefe6bdd6c8aea5a94275)
 - [**阴阳宇宙模型 v0.71 核心公式**](https://gist.github.com/dioodl/476d5121330a1b1eafae300f45682e93)
